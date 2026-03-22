@@ -1,0 +1,8 @@
+'use client'
+import{Section,Slider,Toggle,Select,ColorPicker,n,b,s}from '@/components/ui/Controls'
+import type{ControlsProps}from '@/lib/core/types'
+export function Controls({params:p,onChange:u}:ControlsProps){return(<>
+<Section title="Dots" open><Slider label="Spacing" value={n(p,'spacing',26)} min={4} max={150} step={1} onChange={v=>u('spacing',v)}/><Slider label="Min Radius" value={n(p,'minR',1)*10} min={1} max={100} step={1} onChange={v=>u('minR',v/10)}/><Slider label="Max Radius" value={n(p,'maxR',5.5)*10} min={5} max={200} step={1} onChange={v=>u('maxR',v/10)}/><Slider label="Noise Mix" value={n(p,'noise',0)*100} min={0} max={100} step={1} onChange={v=>u('noise',v/100)}/><Toggle label="Radial Fade" value={b(p,'fade',true)} onChange={v=>u('fade',v)}/><Select label="Shape" value={s(p,'dotShape','circle')} options={[{v:'circle',l:'Circle'},{v:'square',l:'Square'}]} onChange={v=>u('dotShape',v)}/></Section>
+<Section title="Colours"><ColorPicker label="Background" value={p.bg as string||'#050810'} onChange={v=>u('bg',v)}/><ColorPicker label="Dot Color" value={p.dotCol as string||'#1a2540'} onChange={v=>u('dotCol',v)}/></Section>
+<Section title="Adjustments"><Slider label="Brightness" value={n(p,'brightness',100)} min={0} max={200} step={1} onChange={v=>u('brightness',v)}/><Slider label="Contrast" value={n(p,'contrast',100)} min={50} max={200} step={1} onChange={v=>u('contrast',v)}/><Slider label="Saturation" value={n(p,'saturation',100)} min={0} max={200} step={1} onChange={v=>u('saturation',v)}/></Section>
+</>)}

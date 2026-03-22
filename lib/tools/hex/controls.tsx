@@ -1,0 +1,8 @@
+'use client'
+import{Section,Slider,Toggle,ColorPicker,n,b}from '@/components/ui/Controls'
+import type{ControlsProps}from '@/lib/core/types'
+export function Controls({params:p,onChange:u}:ControlsProps){return(<>
+<Section title="Hex Grid" open><Slider label="Cell Size" value={n(p,'size',38)} min={6} max={200} step={1} onChange={v=>u('size',v)}/><Slider label="Gap" value={n(p,'gap',2)*10} min={0} max={100} step={1} onChange={v=>u('gap',v/10)}/><Slider label="Fill Opacity" value={n(p,'fillOp',0.14)*100} min={0} max={100} step={1} onChange={v=>u('fillOp',v/100)}/><Toggle label="Fill Cells" value={b(p,'fill',false)} onChange={v=>u('fill',v)}/><Toggle label="Glow" value={b(p,'glow',true)} onChange={v=>u('glow',v)}/></Section>
+<Section title="Colours"><ColorPicker label="Background" value={p.bg as string||'#050810'} onChange={v=>u('bg',v)}/><ColorPicker label="Lines" value={p.lineCol as string||'#1a2540'} onChange={v=>u('lineCol',v)}/><ColorPicker label="Glow" value={p.glowCol as string||'#4f8ef7'} onChange={v=>u('glowCol',v)}/></Section>
+<Section title="Adjustments"><Slider label="Brightness" value={n(p,'brightness',100)} min={0} max={200} step={1} onChange={v=>u('brightness',v)}/><Slider label="Contrast" value={n(p,'contrast',100)} min={50} max={200} step={1} onChange={v=>u('contrast',v)}/><Slider label="Saturation" value={n(p,'saturation',100)} min={0} max={200} step={1} onChange={v=>u('saturation',v)}/></Section>
+</>)}

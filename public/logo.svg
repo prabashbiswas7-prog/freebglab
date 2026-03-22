@@ -1,0 +1,9 @@
+<svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="36" height="36" rx="10" fill="#5b4cf6"/>
+  <rect x="8" y="8" width="8" height="8" rx="2" fill="white" opacity="0.9"/>
+  <rect x="20" y="8" width="8" height="8" rx="2" fill="white" opacity="0.5"/>
+  <rect x="8" y="20" width="8" height="8" rx="2" fill="white" opacity="0.5"/>
+  <rect x="20" y="20" width="8" height="8" rx="2" fill="white" opacity="0.9"/>
+  <text x="46" y="15" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#f0f0f2" letter-spacing="0.05em">FREE</text>
+  <text x="46" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="0.02em">BG LAB</text>
+</svg>

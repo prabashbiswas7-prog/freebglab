@@ -1,0 +1,8 @@
+'use client'
+import{Section,Slider,AngleSlider,ColorPicker,Select,n}from '@/components/ui/Controls'
+import type{ControlsProps}from '@/lib/core/types'
+export function Controls({params:p,onChange:u}:ControlsProps){return(<>
+<Section title="Lines" open><Slider label="Spacing" value={n(p,'spacing',12)} min={2} max={150} step={1} onChange={v=>u('spacing',v)}/><Slider label="Line Width" value={n(p,'lw',0.8)*10} min={1} max={60} step={1} onChange={v=>u('lw',v/10)}/><Slider label="Opacity" value={n(p,'opacity',0.85)*100} min={5} max={100} step={1} onChange={v=>u('opacity',v/100)}/><AngleSlider label="Angle 1" value={n(p,'a1',45)} onChange={v=>u('a1',v)}/><AngleSlider label="Angle 2" value={n(p,'a2',135)} onChange={v=>u('a2',v)}/><Select label="Layers" value={String(n(p,'layers',2))} options={[{v:'2',l:'2 sets'},{v:'3',l:'3 sets'}]} onChange={v=>u('layers',+v)}/></Section>
+<Section title="Colours"><ColorPicker label="Background" value={p.bg as string||'#050810'} onChange={v=>u('bg',v)}/><ColorPicker label="Lines" value={p.lineCol as string||'#1a2540'} onChange={v=>u('lineCol',v)}/></Section>
+<Section title="Adjustments"><Slider label="Brightness" value={n(p,'brightness',100)} min={0} max={200} step={1} onChange={v=>u('brightness',v)}/><Slider label="Contrast" value={n(p,'contrast',100)} min={50} max={200} step={1} onChange={v=>u('contrast',v)}/><Slider label="Saturation" value={n(p,'saturation',100)} min={0} max={200} step={1} onChange={v=>u('saturation',v)}/></Section>
+</>)}

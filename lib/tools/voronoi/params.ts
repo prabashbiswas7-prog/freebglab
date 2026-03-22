@@ -1,0 +1,2 @@
+import{randInt}from '@/lib/core/utils';import type{Params}from '@/lib/core/types'
+export function defaultParams():Params{return{seed:randInt(),colors:['#0d1f10','#1a3a24','#2d7d46','#6ec97f'],bg:'#060f0c',count:20,fill:1,borders:1,borderOp:0.2,borderW:1,dots:1,brightness:100,contrast:100,saturation:100}}

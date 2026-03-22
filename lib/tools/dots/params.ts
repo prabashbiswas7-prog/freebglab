@@ -1,0 +1,2 @@
+import type{Params}from '@/lib/core/types'
+export function defaultParams():Params{return{bg:'#050810',dotCol:'#1a2540',glowCol:'#4f8ef7',spacing:26,minR:1,maxR:5.5,fade:true,noise:0,dotShape:'circle',brightness:100,contrast:100,saturation:100}}

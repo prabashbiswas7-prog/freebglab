@@ -1,0 +1,2 @@
+import type{Params}from '@/lib/core/types'
+export function defaultParams():Params{return{symbol:'✦',fg:'#5b7cf6',bg:'#0e0f11',fontSize:28,opacity:0.2,spacing:40,angle:0,brightness:100,contrast:100,saturation:100}}

@@ -1,0 +1,8 @@
+'use client'
+import{Section,Slider,ColorPicker,Select,TextInput,n,s}from '@/components/ui/Controls'
+import type{ControlsProps}from '@/lib/core/types'
+export function Controls({params:p,onChange:u}:ControlsProps){return(<>
+<Section title="Text" open><TextInput label="Text" value={p.text as string||'STUDIO'} onChange={v=>u('text',v)}/><Slider label="Font Size" value={n(p,'fontSize',32)} min={8} max={200} step={1} onChange={v=>u('fontSize',v)}/><Slider label="Opacity" value={n(p,'opacity',0.15)*100} min={1} max={100} step={1} onChange={v=>u('opacity',v/100)}/><Slider label="Angle" value={n(p,'angle',-30)+90} min={0} max={180} step={1} onChange={v=>u('angle',v-90)}/><Slider label="Spacing" value={n(p,'spacing',20)} min={0} max={200} step={1} onChange={v=>u('spacing',v)}/><Select label="Weight" value={s(p,'fontWeight','700')} options={[{v:'300',l:'Light'},{v:'400',l:'Regular'},{v:'600',l:'Semibold'},{v:'700',l:'Bold'},{v:'900',l:'Black'}]} onChange={v=>u('fontWeight',v)}/></Section>
+<Section title="Colours"><ColorPicker label="Text" value={p.fg as string||'#5b7cf6'} onChange={v=>u('fg',v)}/><ColorPicker label="Background" value={p.bg as string||'#0e0f11'} onChange={v=>u('bg',v)}/></Section>
+<Section title="Adjustments"><Slider label="Brightness" value={n(p,'brightness',100)} min={0} max={200} step={1} onChange={v=>u('brightness',v)}/><Slider label="Contrast" value={n(p,'contrast',100)} min={50} max={200} step={1} onChange={v=>u('contrast',v)}/><Slider label="Saturation" value={n(p,'saturation',100)} min={0} max={200} step={1} onChange={v=>u('saturation',v)}/></Section>
+</>)}
