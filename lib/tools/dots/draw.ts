@@ -1,5 +1,5 @@
 import type{DrawFn}from '@/lib/core/types'
-import{fbm,rgba}from '@/lib/core/utils'
+import{seedRng,fbm,rgba}from '@/lib/core/utils'
 export const draw:DrawFn=(ctx,w,h,p)=>{
   seedRng((p.seed as number)||1)
   const bg=(p.bg as string)||'#050810',dotCol=(p.dotCol as string)||'#1a2540'
