@@ -1,6 +1,7 @@
 import type{DrawFn}from '@/lib/core/types'
 import{fbm,rgba}from '@/lib/core/utils'
 export const draw:DrawFn=(ctx,w,h,p)=>{
+  seedRng((p.seed as number)||1)
   const bg=(p.bg as string)||'#050810',dotCol=(p.dotCol as string)||'#1a2540'
   const glowCol=(p.glowCol as string)||'#4f8ef7'
   const spacing=(p.spacing as number)||26,minR=(p.minR as number)||1,maxR=(p.maxR as number)||5.5

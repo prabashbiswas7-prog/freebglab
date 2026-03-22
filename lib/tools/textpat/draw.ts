@@ -1,6 +1,8 @@
 import type{DrawFn}from '@/lib/core/types'
+import{seedRng}from '@/lib/core/utils'
 import{rgba}from '@/lib/core/utils'
 export const draw:DrawFn=(ctx,w,h,p)=>{
+  seedRng((p.seed as number)||1)
   const text=(p.text as string)||'STUDIO'
   const fg=(p.fg as string)||'#5b7cf6',bg=(p.bg as string)||'#0e0f11'
   const fontSize=(p.fontSize as number)||32,opacity=(p.opacity as number)||0.15

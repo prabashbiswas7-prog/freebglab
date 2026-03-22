@@ -1,7 +1,8 @@
 import type { DrawFn } from '@/lib/core/types'
-import { hex2rgb } from '@/lib/core/utils'
+import { seedRng, hex2rgb } from '@/lib/core/utils'
 
 export const draw: DrawFn = (ctx, w, h, p) => {
+  seedRng((p.seed as number) || 1)
   const bg     = (p.bg     as string) || '#050810'
   const dotCol = (p.dotCol as string) || '#e0e4f0'
   const size   = Math.max(2, (p.size  as number) || 16)

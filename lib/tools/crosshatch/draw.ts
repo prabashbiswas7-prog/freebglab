@@ -1,6 +1,8 @@
 import type{DrawFn}from '@/lib/core/types'
+import{seedRng}from '@/lib/core/utils'
 import{rgba}from '@/lib/core/utils'
 export const draw:DrawFn=(ctx,w,h,p)=>{
+  seedRng((p.seed as number)||1)
   const bg=(p.bg as string)||'#050810',lineCol=(p.lineCol as string)||'#1a2540'
   const spacing=(p.spacing as number)||12,lw=(p.lw as number)||0.8
   const a1=(p.a1 as number)||45,a2=(p.a2 as number)||135

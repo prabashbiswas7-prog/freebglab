@@ -1,2 +1,2 @@
-import type{Params}from '@/lib/core/types'
-export function defaultParams():Params{return{bg:'#050810',lineCol:'#1a2540',spacing:12,a1:45,a2:135,lw:0.8,opacity:0.85,layers:2,brightness:100,contrast:100,saturation:100}}
+import{randInt}from '@/lib/core/utils';import type{Params}from '@/lib/core/types'
+export function defaultParams():Params{return{seed:randInt(),bg:'#050810',lineCol:'#1a2540',spacing:12,a1:45,a2:135,lw:0.8,opacity:0.85,layers:2,brightness:100,contrast:100,saturation:100}}

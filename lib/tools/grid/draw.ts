@@ -1,6 +1,8 @@
 import type{DrawFn}from '@/lib/core/types'
+import{seedRng}from '@/lib/core/utils'
 import{rgba}from '@/lib/core/utils'
 export const draw:DrawFn=(ctx,w,h,p)=>{
+  seedRng((p.seed as number)||1)
   const bg=(p.bg as string)||'#050810',lineCol=(p.lineCol as string)||'#1a2540'
   const glowCol=(p.glowCol as string)||'#4f8ef7'
   const cell=(p.cell as number)||55,lw=(p.lw as number)||1

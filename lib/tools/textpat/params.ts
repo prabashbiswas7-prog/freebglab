@@ -1,2 +1,2 @@
-import type{Params}from '@/lib/core/types'
-export function defaultParams():Params{return{text:'STUDIO',fg:'#5b7cf6',bg:'#0e0f11',fontSize:32,fontWeight:'700',opacity:0.15,angle:-30,spacing:20,brightness:100,contrast:100,saturation:100}}
+import{randInt}from '@/lib/core/utils';import type{Params}from '@/lib/core/types'
+export function defaultParams():Params{return{seed:randInt(),text:'STUDIO',fg:'#5b7cf6',bg:'#0e0f11',fontSize:32,fontWeight:'700',opacity:0.15,angle:-30,spacing:20,brightness:100,contrast:100,saturation:100}}
