@@ -7,6 +7,7 @@ import Canvas, { renderFull } from './Canvas'
 import ToolPicker from './ToolPicker'
 import ToolControls from './ToolControls'
 import AdSlot from '../layout/AdSlot'
+import { getDefaultParams } from '@/lib/tools/loader'
 
 type Tab = 'tools' | 'controls' | 'export'
 interface Props { initialTool: ToolSlug; initialParams: Params }
@@ -22,7 +23,7 @@ export default function Studio({ initialTool, initialParams }: Props) {
   const router = useRouter()
   const [tool,       setTool]       = useState<ToolSlug>(initialTool)
   const [params,     setParams]     = useState<Params>(initialParams)
-  const [canvasW,    setCanvasW]    = useState(1920)
+  const [canvasW,    setCanvasW]    = useState(1080)
   const [canvasH,    setCanvasH]    = useState(1080)
   const [isDark,     setIsDark]     = useState(true)
   const [tab,        setTab]        = useState<Tab>('controls')
@@ -49,8 +50,7 @@ export default function Studio({ initialTool, initialParams }: Props) {
 
   const switchTool = useCallback(async (slug: ToolSlug) => {
     try {
-      const mod = await import(`@/lib/tools/${slug}/params`)
-      const p = mod.defaultParams()
+      const p = getDefaultParams(slug)
       setTool(slug); setParams(p)
       pushHist(slug, p)
       router.push(`/tool/${slug}`, { scroll: false })
@@ -66,8 +66,7 @@ export default function Studio({ initialTool, initialParams }: Props) {
 
   const shuffleAll = useCallback(async () => {
     try {
-      const mod = await import(`@/lib/tools/${tool}/params`)
-      const fresh = mod.defaultParams()
+      const fresh = getDefaultParams(tool)
       setParams(prev => {
         const next = { ...prev }
         if ('seed' in next) next.seed = Math.floor(Math.random() * 99999) + 1

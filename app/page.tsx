@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import type { ToolMeta } from '@/lib/core/types'
+import { getDrawFn, getDefaultParams } from '@/lib/tools/loader'
 import { TOOLS, getToolsByCategory } from '@/lib/tools/registry'
 
 export default function HomePage() {
@@ -120,20 +121,15 @@ function ToolCard({ tool }: { tool: ToolMeta }) {
 
   useEffect(() => {
     let dead = false
-    const go = async () => {
+    const go = () => {
       try {
-        const [dm, pm] = await Promise.all([
-          import(`@/lib/tools/${tool.slug}/draw`),
-          import(`@/lib/tools/${tool.slug}/params`),
-        ])
-        if (dead) return
-        const p = pm.defaultParams()
-        const c = canvasRef.current; if (!c) return
+        const p   = getDefaultParams(tool.slug)
+        const c   = canvasRef.current; if (!c) return
         const ctx = c.getContext('2d'); if (!ctx) return
         c.width = 400; c.height = 260
-        dm.draw(ctx, 400, 260, p)
+        getDrawFn(tool.slug)(ctx, 400, 260, p)
         if (!dead) setLoaded(true)
-      } catch { if (!dead) setLoaded(true) }
+      } catch (e) { if (!dead) setLoaded(true) }
     }
     const id = setTimeout(go, Math.random() * 800)
     return () => { dead = true; clearTimeout(id) }
