@@ -4,7 +4,7 @@ export const draw:DrawFn=(ctx,w,h,p)=>{
   seedRng((p.seed as number)||1)
   const colors=(p.colors as string[])||['#2d3561','#c05c7e','#f3826f']
   const scale=(p.scale as number)||2.2,warp=(p.warp as number)||3.5
-  const oct=(p.octaves as number)||5,bright=(p.brightness as number)||1.1
+  const oct=(p.octaves as number)||5,bright=(p.fluidBright as number)||1.1
   const curveDist=(p.curveDist as number)||50
   const img=ctx.createImageData(w,h);const d=img.data
   for(let y=0;y<h;y++)for(let x=0;x<w;x++){
