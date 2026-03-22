@@ -29,7 +29,7 @@ export default function ToolControls({ toolSlug, params, onChange, onShuffle, up
     <div ref={scrollRef} style={{ flex: 1, overflowY: 'auto', overscrollBehavior: 'contain' }}>
 
       {/* Action buttons */}
-      <div style={{ padding: '12px 14px 8px', display: 'flex', flexDirection: 'column', gap: 5 }}>
+      <div style={{ padding: '8px 14px 6px', display: 'flex', flexDirection: 'column', gap: 4 }}>
         {params.seed !== undefined && (
           <button
             onClick={() => onChange('seed', Math.floor(Math.random() * 99999) + 1)}

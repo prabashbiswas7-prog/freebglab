@@ -73,14 +73,28 @@ export default function Studio({ initialTool, initialParams }: Props) {
         if ('colors' in next && Array.isArray(next.colors)) {
           next.colors = randomPalette((next.colors as string[]).length)
         }
+        // Keys to never randomise
+        const skip = new Set(['seed','colors','brightness','contrast','saturation',
+          'bg','lineCol','glowCol','dotCol','fg','colorA','colorB',
+          'opacity','count','_uploadImg'])
         Object.keys(fresh).forEach(k => {
-          if (['seed','colors','brightness','contrast','saturation','bg','lineCol','glowCol','dotCol','fg','colorA','colorB'].includes(k)) return
-          if (typeof fresh[k] === 'number' && Math.random() > 0.5) {
-            const v = fresh[k] as number
-            const lo = v * 0.4, hi = v * 2.2
-            next[k] = Math.max(lo, Math.min(hi, v * (0.5 + Math.random() * 1.5)))
-          }
+          if (skip.has(k)) return
+          const v = fresh[k]
+          if (typeof v !== 'number') return
+          if (Math.random() > 0.55) return
+          // Safe ranges per param type
+          if (k === 'overlap')  { next[k] = 35 + Math.random() * 50; return }
+          if (k === 'amp')      { next[k] = 15 + Math.random() * 70; return }
+          if (k === 'freq')     { next[k] = 0.5 + Math.random() * 5; return }
+          if (k === 'warp' || k === 'waveWarp') { next[k] = Math.random() * 60; return }
+          if (k === 'smooth')   { next[k] = 30 + Math.random() * 60; return }
+          // Generic: stay within 40-180% of default, never go negative
+          const lo = Math.max(0, v * 0.4)
+          const hi = v * 1.8
+          next[k] = lo + Math.random() * (hi - lo)
         })
+        // Always keep opacity at 1
+        if ('opacity' in next) next.opacity = 1
         return next
       })
     } catch (e) { console.error(e) }

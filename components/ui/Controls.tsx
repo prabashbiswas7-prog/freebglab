@@ -20,7 +20,7 @@ export function Section({ title, children, open: defaultOpen = false, badge }: {
           <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
       </div>
-      {open && <div style={{ padding:'2px 14px 12px' }}>{children}</div>}
+      {open && <div style={{ padding:'8px 14px 14px' }}>{children}</div>}
     </div>
   )
 }
@@ -33,7 +33,7 @@ export function Slider({ label, value, min, max, step = 1, dec, kbd, onChange }:
   const d = dec !== undefined ? dec : step < 1 ? 1 : 0
   const display = Number(value).toFixed(d)
   return (
-    <div style={{ marginBottom:12 }}>
+    <div style={{ marginBottom:14 }}>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:5 }}>
         <span style={{ fontSize:12, color:'var(--t2)', display:'flex', alignItems:'center', gap:5 }}>
           {label}{kbd && <Kbd>{kbd}</Kbd>}
@@ -98,7 +98,7 @@ export function AngleSlider({ label, value, onChange }: {
   label: string; value: number; onChange: (v: number) => void
 }) {
   return (
-    <div style={{ marginBottom:12 }}>
+    <div style={{ marginBottom:14 }}>
       <div style={{ display:'flex', justifyContent:'space-between', marginBottom:5 }}>
         <span style={{ fontSize:12, color:'var(--t2)' }}>{label}</span>
         <span style={{ fontSize:11, color:'var(--t1)', fontFamily:'var(--font-mono)' }}>{Math.round(value)}°</span>
@@ -190,4 +190,14 @@ export function b(p: Record<string, unknown>, key: string, def = false): boolean
 }
 export function s(p: Record<string, unknown>, key: string, def: string): string {
   return typeof p[key] === 'string' ? p[key] as string : def
+}
+
+// ─── Divider ──────────────────────────────────────────────────
+export function Divider() {
+  return <div style={{ height:1, background:'var(--b1)', margin:'4px 0 12px' }} />
+}
+
+// ─── Label ────────────────────────────────────────────────────
+export function Label({ children }: { children: React.ReactNode }) {
+  return <div style={{ fontSize:9, fontWeight:600, letterSpacing:'0.12em', textTransform:'uppercase' as const, color:'var(--t4)', marginBottom:8, marginTop:4 }}>{children}</div>
 }

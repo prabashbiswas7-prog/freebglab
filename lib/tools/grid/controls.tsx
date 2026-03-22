@@ -1,8 +1,27 @@
 'use client'
-import{Section,Slider,Toggle,AngleSlider,ColorPicker,n,b}from '@/components/ui/Controls'
-import type{ControlsProps}from '@/lib/core/types'
-export function Controls({params:p,onChange:u}:ControlsProps){return(<>
-<Section title="Grid" open><Slider label="Cell Size" value={n(p,'cell',55)} min={4} max={400} step={1} onChange={v=>u('cell',v)}/><Slider label="Line Width" value={n(p,'lw',1)*10} min={1} max={80} step={1} onChange={v=>u('lw',v/10)}/><AngleSlider label="Angle" value={n(p,'angle',0)} onChange={v=>u('angle',v)}/><Toggle label="Glow" value={b(p,'glow',true)} onChange={v=>u('glow',v)}/><Toggle label="Fade Edges" value={b(p,'fade',true)} onChange={v=>u('fade',v)}/><Toggle label="Isometric" value={b(p,'iso',false)} onChange={v=>u('iso',v)}/></Section>
-<Section title="Colours"><ColorPicker label="Background" value={p.bg as string||'#050810'} onChange={v=>u('bg',v)}/><ColorPicker label="Lines" value={p.lineCol as string||'#1a2540'} onChange={v=>u('lineCol',v)}/><ColorPicker label="Glow" value={p.glowCol as string||'#4f8ef7'} onChange={v=>u('glowCol',v)}/></Section>
-<Section title="Adjustments"><Slider label="Brightness" value={n(p,'brightness',100)} min={0} max={200} step={1} onChange={v=>u('brightness',v)}/><Slider label="Contrast" value={n(p,'contrast',100)} min={50} max={200} step={1} onChange={v=>u('contrast',v)}/><Slider label="Saturation" value={n(p,'saturation',100)} min={0} max={200} step={1} onChange={v=>u('saturation',v)}/></Section>
-</>)}
+import { Section, Slider, Toggle, AngleSlider, ColorPicker, Divider, n, b } from '@/components/ui/Controls'
+import type { ControlsProps } from '@/lib/core/types'
+export function Controls({ params: p, onChange: u }: ControlsProps) {
+  return (<>
+    <Section title="Grid" open>
+      <Slider label="Cell Size"   value={n(p,'cell',55)}    min={4}   max={400} step={1}   onChange={v=>u('cell',v)} />
+      <Slider label="Line Width"  value={n(p,'lw',1)*10}    min={1}   max={80}  step={1}   onChange={v=>u('lw',v/10)} />
+      <Divider />
+      <AngleSlider label="Angle" value={n(p,'angle',0)} onChange={v=>u('angle',v)} />
+      <Divider />
+      <Toggle label="Glow"        value={b(p,'glow',true)}       onChange={v=>u('glow',v)} />
+      <Toggle label="Fade Edges"  value={b(p,'fade',true)}       onChange={v=>u('fade',v)} />
+      <Toggle label="Isometric"   value={b(p,'iso',false)}       onChange={v=>u('iso',v)} />
+    </Section>
+    <Section title="Colours">
+      <ColorPicker label="Background" value={p.bg as string||'#050810'}      onChange={v=>u('bg',v)} />
+      <ColorPicker label="Lines"      value={p.lineCol as string||'#1a2540'} onChange={v=>u('lineCol',v)} />
+      <ColorPicker label="Glow"       value={p.glowCol as string||'#4f8ef7'} onChange={v=>u('glowCol',v)} />
+    </Section>
+    <Section title="Adjustments">
+      <Slider label="Brightness" value={n(p,'brightness',100)} min={0}  max={200} step={1} onChange={v=>u('brightness',v)} />
+      <Slider label="Contrast"   value={n(p,'contrast',100)}   min={50} max={200} step={1} onChange={v=>u('contrast',v)} />
+      <Slider label="Saturation" value={n(p,'saturation',100)} min={0}  max={200} step={1} onChange={v=>u('saturation',v)} />
+    </Section>
+  </>)
+}
