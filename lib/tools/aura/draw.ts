@@ -5,7 +5,7 @@ export const draw:DrawFn=(ctx,w,h,p)=>{
   const colors=(p.colors as string[])||['#0d0040','#4a00c8','#b040ff']
   const bg=(p.bg as string)||'#04050d'
   const count=(p.count as number)||4,size=(p.size as number)||68
-  const soft=(p.softness as number)||80,bright=(p.brightness as number)||75
+  const soft=(p.softness as number)||80,bright=(p.auraBrightness as number)||75
   const scatter=(p.scatter as number)||85
   ctx.fillStyle=bg;ctx.fillRect(0,0,w,h)
   for(let i=0;i<count;i++){
